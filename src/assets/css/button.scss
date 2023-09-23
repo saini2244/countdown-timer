@@ -1,0 +1,42 @@
+.custom-button {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    color: white;
+    background-color: red;
+    border: 2px solid red;
+    margin: 0.5rem;
+    cursor: pointer;
+    font-size: 18px;
+
+    &.start-button {
+        border-color: green;
+        background-color: green;
+    }
+
+    &.stop-button {
+        border-color: red;
+        background-color: red;
+    }
+
+    &.pause-button {
+        border-color: orange;
+        background-color: orange;
+    }
+
+    &.resume-button {
+        border-color: lightgreen;
+        background-color: lightgreen;
+    }
+
+    &.reset-button {
+        border-color: lightcoral;
+        background-color: lightcoral;
+    }
+
+    &.lap-button {
+        border-color: black;
+        color: black;
+        background-color: white;
+    }
+}

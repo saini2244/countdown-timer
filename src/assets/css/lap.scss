@@ -1,0 +1,22 @@
+.lap-container {
+    
+    .lap-details {
+        display: flex;
+        justify-content: space-around;
+        font-size: 24px;
+        font-weight: 700;
+
+        .lap-index {
+            color: lightgray;
+            font-weight: 400;
+        }
+
+        .lap-time {
+            color: #f29e25;
+        }
+
+        .lap-end-time {
+            color: black;
+        }
+    }
+}
