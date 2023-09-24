@@ -1,4 +1,4 @@
-.timer-container {
+.countdown-timer-container {
     display: flex;
     flex-direction: row;
     margin: 1rem;
@@ -6,11 +6,19 @@
     .button-container {
         flex: 0.5;
 
-        .stop-watch-timer {
+        .countdown-timer-timer {
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 4rem;
+        }
+
+        .lap-time {
+            font-size: 14px;
+
+            span {
+                color: #f29e25;
+            }
         }
     }
 

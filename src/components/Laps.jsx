@@ -1,4 +1,4 @@
-import '../assets/css/lap.scss'
+import '../assets/css/laps.scss'
 
 export const Laps = ({ laps }) => {
     return (

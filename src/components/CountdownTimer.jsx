@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { TimePicker } from './TimePicker';
+import { InputTimePicker } from './InputTimePicker';
 import { Button } from './Button';
-import { useStopWatch } from '../customHooks/useStopWatch';
+import { useCountdownTimer } from '../customHooks/useCountdownTimer';
 import { Laps } from './Laps';
-import '../assets/css/timer.scss'
 import { DEFAULT_TIME, PAUSE, RUNNING, START, STOP } from '../utils/constant';
-import { getStopWatchTime } from '../utils/commonService';
+import { getTimeAsString } from '../utils/commonService';
+import '../assets/css/countdown-timer.scss'
 
-export const StopWatch = () => {
+export const CountdownTimer = () => {
   const [time, setTime] = useState(DEFAULT_TIME);
-  const { stopWatchTimer, status, laps, start, stop, pause, resume, lap, reset } = useStopWatch();
+  const { countdownTimer, lapTimer, status, laps, start, stop, pause, resume, lap, reset } = useCountdownTimer();
 
   const buttons = [{
     name: "Start",
@@ -46,20 +46,31 @@ export const StopWatch = () => {
     enabledStatus: [RUNNING],
     clickhandler: lap,
     customClass: "lap-button"
-  }]
+  }];
+
+  const clickhandler = (button, time) => {
+    button.clickhandler(time)
+    if (button.name === 'Reset') {
+      setTime(DEFAULT_TIME);
+    }
+  }
 
   return (
-    <div className='timer-container'>
+    <div className='countdown-timer-container' data-testid="testid-countdown-timer-container">
       <div className='button-container'>
-        <h1>Stop Watch</h1>
-        <TimePicker time={time} setTime={setTime} />
-        <div className='stop-watch-timer'>
-          <span>{getStopWatchTime(stopWatchTimer)}</span>
+        <InputTimePicker status={status} time={time} setTime={setTime} />
+        <div className='countdown-timer-timer'>
+          <span>{getTimeAsString(countdownTimer)}</span>
         </div>
+        {status !== START &&
+          <div className='lap-time'>
+            Current Laps time: <span>{getTimeAsString(lapTimer)}</span>
+          </div>
+        }
         {
           buttons.map(button => (
             button.enabledStatus.includes(status) &&
-            <Button key={button.name} name={button.name} customClass={button.customClass} clickhandler={() => button.clickhandler(time)} />
+            <Button key={button.name} name={button.name} customClass={button.customClass} clickhandler={() => clickhandler(button, time)} />
           ))
         }
       </div>

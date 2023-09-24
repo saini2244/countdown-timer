@@ -4,14 +4,14 @@ const padStart = (str, defaultPad = 2) => {
     return str.toString().padStart(defaultPad, '0');
 }
 
-export const getStopWatchTime = (time) => {
+export const getTimeAsString = (time) => {
     const { hours, minutes, seconds } = time || DEFAULT_TIME;
     return `${padStart(hours)}:${padStart(minutes)}:${padStart(seconds)}`;
 }
 
-export const getNextStopTime = (time) => {
+export const calculateCountdownTimer = (time = DEFAULT_TIME) => {
     const newTime = { ...time };
-    const { hours, minutes, seconds } = newTime;
+    const { minutes, seconds } = newTime;
     if (seconds > 0) {
         newTime.seconds -= 1;
     } else if (minutes > 0) {
@@ -25,9 +25,9 @@ export const getNextStopTime = (time) => {
     return newTime
 }
 
-export const getLapTime = (time) => {
+export const getLapsTime = (time = DEFAULT_TIME) => {
     const newTime = { ...time };
-    const { hours, minutes, seconds } = newTime;
+    const { minutes, seconds } = newTime;
     if (seconds < 59) {
         newTime.seconds += 1;
     } else if (minutes < 59) {
@@ -39,4 +39,18 @@ export const getLapTime = (time) => {
         newTime.hours += 1;
     }
     return newTime
+}
+
+export const getTime = (time) => {
+    let { hours, minutes, seconds } = time;
+    if (seconds > 60) {
+        minutes++;
+        seconds = parseInt(seconds) - 59;
+    }
+    if (minutes > 60) {
+        hours++;
+        minutes = parseInt(minutes) - 60;
+    }
+    minutes = minutes > 60 ? 60 : minutes;
+    return { hours, minutes, seconds };
 }

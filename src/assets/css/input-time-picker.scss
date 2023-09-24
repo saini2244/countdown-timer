@@ -1,0 +1,42 @@
+.container {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+
+    .labels {
+        display: flex;
+        flex-direction: row;
+        font-size: 24px;
+
+        .input-label {
+            margin: 0.25rem;
+            flex: 33%;
+        }
+    }
+
+    .inputs {
+        display: flex;
+
+        .colon {
+            font-size: 24px;
+        }
+
+        .custom-input {
+            flex: 33%;
+            margin: 0.25rem;
+            padding: 0.5rem;
+            width: 2rem;
+            text-align: center;
+            font-size: 30px;
+            border: 2px solid gray;
+            border-radius: 8px;
+    
+            &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+        }
+    }
+}
