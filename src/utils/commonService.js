@@ -1,7 +1,11 @@
 import { DEFAULT_TIME } from "./constant";
 
-const padStart = (str, defaultPad = 2) => {
-    return str.toString().padStart(defaultPad, '0');
+export const padStart = (time) => {
+    const timeWith2Digit = Math.abs(time).toString().padStart(2, '0');
+    if (time < 0) {
+        return `-${timeWith2Digit}`;
+    }
+    return timeWith2Digit;
 }
 
 export const getTimeAsString = (time) => {
@@ -10,35 +14,33 @@ export const getTimeAsString = (time) => {
 }
 
 export const calculateCountdownTimer = (time = DEFAULT_TIME) => {
-    const newTime = { ...time };
-    const { minutes, seconds } = newTime;
+    let { hours, minutes, seconds } = time || {};
     if (seconds > 0) {
-        newTime.seconds -= 1;
+        seconds -= 1;
     } else if (minutes > 0) {
-        newTime.minutes -= 1;
-        newTime.seconds = 59;
+        minutes -= 1;
+        seconds = 59;
     } else {
-        newTime.seconds = 59;
-        newTime.minutes = 59;
-        newTime.hours -= 1;
+        seconds = 59;
+        minutes = 59;
+        hours -= 1;
     }
-    return newTime
+    return { hours, minutes, seconds };
 }
 
 export const getLapsTime = (time = DEFAULT_TIME) => {
-    const newTime = { ...time };
-    const { minutes, seconds } = newTime;
+    let { hours, minutes, seconds } = time;
     if (seconds < 59) {
-        newTime.seconds += 1;
+        seconds += 1;
     } else if (minutes < 59) {
-        newTime.minutes += 1;
-        newTime.seconds = 0;
+        minutes += 1;
+        seconds = 0;
     } else {
-        newTime.seconds = 0;
-        newTime.minutes = 0;
-        newTime.hours += 1;
+        seconds = 0;
+        minutes = 0;
+        hours += 1;
     }
-    return newTime
+    return { hours, minutes, seconds };
 }
 
 export const getTime = (time) => {
