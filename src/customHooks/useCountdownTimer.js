@@ -33,6 +33,10 @@ export const useCountdownTimer = () => {
         if (countdownTimer && status === RUNNING) {
             timer(countdownTimer)
         }
+
+        return () => {
+            clearTimerInterval();
+        }
     }, [countdownTimer, status, timer])
 
     const start = (time) => {
