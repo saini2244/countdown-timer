@@ -1,70 +1,28 @@
-# Getting Started with Create React App
+## Reactjs 18, HTML5, CSS3, NPM, SCSS, node > 16
+## Component:
+1. CountdownTimer: CountdownTimer shows the current countdown time, current laps time and buttons like start, stop etc.
+2. Button: Common component for buttons. It will take props’ name, customClass, clickhandler
+3. InputTimePicker: User can enter a number for hours, minutes and seconds
+4. Laps: It will display the laps’ details like laps time, countdown time
+5. commonService: Common function like padStart, getTimeAsString etc
+6. useCountdownTimer: It is a custom hook for business logic like start, stop, laps time etc.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Deployment:
+1. Sandbox Link
+### Steps to deploy on sandbox
+1. Open https://codesandbox.io/s/react-new
+2. Select the new repository
+3. Import repository (https://github.com/saini2244/stop-watch.git)
+4. It will work after few seconds
 
-## Available Scripts
+## Debugging and Monitoring:
+1. google analytics to track the button click, pages and timer etc.
 
-In the project directory, you can run:
+## How to setup in local:
+1. git clone https://github.com/saini2244/stop-watch.git
+2. git branch main
+3. npm install
+4. npm start
+5. Open localhost:3000 in browser
+6. npm run test (to run the unit test cases)
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
