@@ -8,9 +8,9 @@ export const padStart = (time) => {
     return timeWith2Digit;
 }
 
-export const getTimeAsString = (time) => {
+export const getTimeAsString = (time, isPositive = true) => {
     const { hours, minutes, seconds } = time || DEFAULT_TIME;
-    return `${padStart(hours)}:${padStart(minutes)}:${padStart(seconds)}`;
+    return `${isPositive ? "" : "-"}${padStart(hours)}:${padStart(minutes)}:${padStart(seconds)}`;
 }
 
 export const calculateCountdownTimer = (time = DEFAULT_TIME) => {

@@ -9,7 +9,7 @@ import '../assets/css/countdown-timer.scss'
 
 export const CountdownTimer = () => {
   const [time, setTime] = useState(DEFAULT_TIME);
-  const { countdownTimer, lapTimer, status, laps, start, stop, pause, resume, lap, reset } = useCountdownTimer();
+  const { countdownTimer, lapTimer, isPositive, status, laps, start, stop, pause, resume, lap, reset } = useCountdownTimer();
 
   const buttons = [{
     name: "Start",
@@ -60,7 +60,7 @@ export const CountdownTimer = () => {
       <div className='button-container'>
         <InputTimePicker status={status} time={time} setTime={setTime} />
         <div className='countdown-timer-timer'>
-          <span>{getTimeAsString(countdownTimer)}</span>
+          <span>{getTimeAsString(countdownTimer, isPositive.current)}</span>
         </div>
         {status !== START &&
           <div className='lap-time'>

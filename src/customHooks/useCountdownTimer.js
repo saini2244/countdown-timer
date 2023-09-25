@@ -9,12 +9,21 @@ export const useCountdownTimer = () => {
     const [status, setStatus] = useState(START);
     const [laps, setLaps] = useState({});
     const interval = useRef(null);
+    const isPositive = useRef(true);
 
     const timer = useCallback(() => {
         clearTimerInterval();
         interval.current = setInterval(() => {
             setCountdownTimer((prev) => {
-                return calculateCountdownTimer(prev);
+                const { hours, minutes, seconds } = prev;
+                if (!hours && !minutes && !seconds) {
+                    isPositive.current = false;
+                }
+                if (isPositive.current) {
+                    return calculateCountdownTimer(prev);
+                } else {
+                    return getLapsTime(prev);
+                }
             });
             setLapTimer((prev) => {
                 return getLapsTime(prev);
@@ -67,14 +76,15 @@ export const useCountdownTimer = () => {
         setCountdownTimer(DEFAULT_TIME);
         setLaps({});
         clearTimerInterval();
+        isPositive.current = true;
     };
 
     const lap = () => {
-        const lapEndTime = getTimeAsString(countdownTimer);
+        const lapEndTime = getTimeAsString(countdownTimer, isPositive.current);
         const lapTime = getTimeAsString(lapTimer);
         setLaps({ ...laps, [lapEndTime]: lapTime });
         setLapTimer(DEFAULT_TIME);
     }
 
-    return { countdownTimer, lapTimer, status, laps, start, stop, pause, resume, lap, reset };
+    return { countdownTimer, lapTimer, isPositive, status, laps, start, stop, pause, resume, lap, reset };
 }

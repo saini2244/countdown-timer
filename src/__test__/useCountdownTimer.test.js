@@ -26,7 +26,7 @@ describe("useCountdownTimer", () => {
         act(() => {
             jest.advanceTimersByTime(1000);
         });
-        expect(result.current.countdownTimer).toStrictEqual({ hours: -1, minutes: 59, seconds: 59 });
+        expect(result.current.countdownTimer).toStrictEqual({ hours: 0, minutes: 0, seconds: 1 });
         expect(result.current.status).toBe(RUNNING);
 
     });
